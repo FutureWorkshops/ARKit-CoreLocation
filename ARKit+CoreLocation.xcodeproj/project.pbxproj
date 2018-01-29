@@ -133,12 +133,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49A3FBEC1F09988100AA59C8 /* Build configuration list for PBXNativeTarget "ARKit+CoreLocation" */;
 			buildPhases = (
-				63B0FABA6912CCD1470FF302 /* [CP] Check Pods Manifest.lock */,
+				EF346D078B433449AD892AE2 /* 📦 Check Pods Manifest.lock */,
 				49A3FBD41F09988100AA59C8 /* Sources */,
 				49A3FBD51F09988100AA59C8 /* Frameworks */,
 				49A3FBD61F09988100AA59C8 /* Resources */,
-				B912B23DE2753A7230AC73FF /* [CP] Embed Pods Frameworks */,
-				3B65648ABF0CBE46120C6ABF /* [CP] Copy Pods Resources */,
+				CCC75E11717B145E47EAD03F /* 📦 Embed Pods Frameworks */,
+				DF3C3AC1BE11B03DECF3D988 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -156,11 +156,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Project Dent";
 				TargetAttributes = {
 					49A3FBD71F09988100AA59C8 = {
 						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -195,14 +196,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3B65648ABF0CBE46120C6ABF /* [CP] Copy Pods Resources */ = {
+		CCC75E11717B145E47EAD03F /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARKit+CoreLocation/Pods-ARKit+CoreLocation-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF3C3AC1BE11B03DECF3D988 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,34 +226,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARKit+CoreLocation/Pods-ARKit+CoreLocation-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		63B0FABA6912CCD1470FF302 /* [CP] Check Pods Manifest.lock */ = {
+		EF346D078B433449AD892AE2 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		B912B23DE2753A7230AC73FF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARKit+CoreLocation/Pods-ARKit+CoreLocation-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -297,6 +298,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -352,6 +355,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -384,12 +389,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 38104A8494954E9B79241EAE /* Pods-ARKit+CoreLocation.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "ARKit+CoreLocation/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ProjectDent.ARKit-CoreLocation";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -399,12 +408,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A967016A4C9D5DA8BF8AE438 /* Pods-ARKit+CoreLocation.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "ARKit+CoreLocation/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ProjectDent.ARKit-CoreLocation";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

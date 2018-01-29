@@ -50,7 +50,11 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     ///Not advisable to change this as the scene is ongoing.
     public var locationEstimateMethod: LocationEstimateMethod = .mostRelevantEstimate
     
-    let locationManager = LocationManager()
+    var locationManager: LocationProvider {
+        didSet {
+            self.locationManager.delegate = self
+        }
+    }
     ///When set to true, displays an axes node at the start of the scene
     public var showAxesNode = false
     
@@ -88,16 +92,19 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     public var orientToTrueNorth = true
     
     //MARK: Setup
-    public convenience init() {
+    public convenience init(locationManager: LocationProvider? = nil) {
         self.init(frame: CGRect.zero, options: nil)
+        self.locationManager = locationManager ?? LocationManager()
     }
     
     public override init(frame: CGRect, options: [String : Any]? = nil) {
+        self.locationManager = LocationManager()
         super.init(frame: frame, options: options)
         finishInitialization()
     }
-
+    
     required public init?(coder aDecoder: NSCoder) {
+        self.locationManager = LocationManager()
         super.init(coder: aDecoder)
         finishInitialization()
     }
@@ -493,11 +500,11 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
 //MARK: LocationManager
 @available(iOS 11.0, *)
 extension SceneLocationView: LocationManagerDelegate {
-    func locationManagerDidUpdateLocation(_ locationManager: LocationManager, location: CLLocation) {
+    public func locationManagerDidUpdateLocation(_ locationManager: LocationProvider, location: CLLocation) {
         addSceneLocationEstimate(location: location)
     }
     
-    func locationManagerDidUpdateHeading(_ locationManager: LocationManager, heading: CLLocationDirection, accuracy: CLLocationAccuracy) {
+    public func locationManagerDidUpdateHeading(_ locationManager: LocationProvider, heading: CLLocationDirection, accuracy: CLLocationAccuracy) {
         
     }
 }

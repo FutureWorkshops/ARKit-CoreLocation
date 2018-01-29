@@ -9,14 +9,21 @@
 import Foundation
 import CoreLocation
 
-protocol LocationManagerDelegate: class {
-    func locationManagerDidUpdateLocation(_ locationManager: LocationManager, location: CLLocation)
-    func locationManagerDidUpdateHeading(_ locationManager: LocationManager, heading: CLLocationDirection, accuracy: CLLocationDirection)
+public protocol LocationManagerDelegate: class {
+    func locationManagerDidUpdateLocation(_ locationManager: LocationProvider, location: CLLocation)
+    func locationManagerDidUpdateHeading(_ locationManager: LocationProvider, heading: CLLocationDirection, accuracy: CLLocationDirection)
+}
+
+public protocol LocationProvider {
+    var delegate: LocationManagerDelegate? { get set }
+    var currentLocation: CLLocation? { get }
+    var heading: CLLocationDirection? { get }
+    var headingAccuracy: CLLocationDegrees? { get }
 }
 
 ///Handles retrieving the location and heading from CoreLocation
 ///Does not contain anything related to ARKit or advanced location
-class LocationManager: NSObject, CLLocationManagerDelegate {
+class LocationManager: NSObject, CLLocationManagerDelegate, LocationProvider {
     weak var delegate: LocationManagerDelegate?
     
     private var locationManager: CLLocationManager?
